@@ -18,7 +18,7 @@
       region: "{{ ec2_region }}"
       ec2_access_key: "{{ ec2_access_key }}"
       ec2_secret_key: "{{ ec2_secret_key }}"
-    with_items: security_groups
+    with_items: "{{ security_groups }}"
 
   - name: Launch instances
     ec2: 
@@ -34,4 +34,4 @@
       count_tag: "{{ item.count_tag }}"
       wait: true
     register: ec2
-    with_items: ec2_instances
+    with_items: "{{ ec2_instances }}"
